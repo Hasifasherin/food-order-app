@@ -1,51 +1,44 @@
-import React, { useState } from 'react';
-import products from '../data/products';
+import React from "react";
+import products from "../data/products";
+import { FaStar } from "react-icons/fa";
 
-const Menu = () => {
-  const [search, setSearch] = useState('');
-  const [category, setCategory] = useState('');
-
-  const filteredItems = products.filter(item =>
-    item.name.toLowerCase().includes(search.toLowerCase()) &&
-    (category === '' || item.category === category)
-  );
-
-  const categories = [...new Set(products.map(item => item.category))];
-
+export default function Menu() {
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-4">Menu</h2>
-
-      <div className="mb-6 flex flex-col md:flex-row gap-4">
-        <input
-          type="text"
-          placeholder="Search food..."
-          className="border p-2 rounded w-full md:w-1/3"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <select
-          className="border p-2 rounded w-full md:w-1/3"
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="">All Categories</option>
-          {categories.map((cat, idx) => (
-            <option key={idx} value={cat}>{cat}</option>
-          ))}
-        </select>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {filteredItems.map(item => (
-          <div key={item.id} className="border p-4 rounded shadow">
-            <img src={item.image} alt={item.name} className="w-full h-40 object-cover rounded mb-2" />
-            <h3 className="text-xl font-bold">{item.name}</h3>
-            <p className="text-gray-500">{item.description}</p>
-            <p className="font-semibold mt-2">₹{item.price}</p>
+    <div className="bg-yellow-50 min-h-screen px-6 py-10">
+      <h1 className="text-3xl font-bold text-center text-yellow-800 mb-8">Our Full Menu</h1>
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {products.map((item) => (
+          <div
+            key={item.id}
+            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition"
+          >
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-full h-48 object-cover"
+            />
+            <div className="p-4">
+              <h2 className="text-xl font-semibold mb-1">{item.name}</h2>
+              <p className="text-sm text-gray-600 mb-2">{item.desc}</p>
+              <div className="flex text-yellow-500 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar
+                    key={i}
+                    className={i < item.rating ? "" : "text-gray-300"}
+                  />
+                ))}
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-yellow-700 font-bold text-lg">{item.price}</span>
+                <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1 text-sm rounded-full">
+                  Add
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </div>
     </div>
   );
-};
-
-export default Menu;
+}

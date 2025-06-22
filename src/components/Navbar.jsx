@@ -1,14 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
 
-const Navbar = () => (
-  <nav className="bg-gray-800 text-white px-6 py-4 flex justify-between">
-    <h1 className="font-bold text-xl">FoodOrder</h1>
-    <div className="space-x-4">
-      <Link to="/" className="hover:text-yellow-400">Home</Link>
-      <Link to="/menu" className="hover:text-yellow-400">Menu</Link>
-    </div>
-  </nav>
-);
-
-export default Navbar;
+export default function Navbar() {
+  return (
+    <nav className="bg-yellow-700 text-white px-6 py-4 flex justify-between items-center">
+      <h1 className="text-2xl font-bold">CleanBite</h1>
+      <ul className="flex gap-6">
+        <li className="hover:underline cursor-pointer">Home</li>
+        <li className="hover:underline cursor-pointer">Menu</li>
+        <li className="hover:underline cursor-pointer">Cart</li>
+        <li className="hover:underline cursor-pointer">Profile</li>
+      </ul>
+    </nav>
+  );
+}
