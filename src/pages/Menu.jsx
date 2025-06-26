@@ -75,7 +75,6 @@ export default function Menu() {
                 <button
                   onClick={() => {
                     dispatch({ type: "ADD_TO_CART", payload: item });
-                    navigate("/cart");
                   }}
                   className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1 text-sm rounded-full"
                 >

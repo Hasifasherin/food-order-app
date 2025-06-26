@@ -1,4 +1,3 @@
-// ✅ Updated products.js with full categorized menu
 
 const products = [
   // 🍔 Burgers
@@ -42,8 +41,8 @@ const products = [
   },
   {
     id: 5,
-    name: "Cookies & Cream",
-    desc: "Classic cookies blended with vanilla",
+    name: "chocolate ice cream",
+    desc: "Sweet and creamy chocolate flavor",
     price: "$4.00",
     rating: 5,
     category: "Ice Cream",
