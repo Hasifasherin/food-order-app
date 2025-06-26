@@ -1,10 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { GiHamburgerMenu, GiFrenchFries, GiFruitBowl, GiCakeSlice } from "react-icons/gi";
 import { FaIceCream } from "react-icons/fa";
 import { MdOutlineRamenDining } from "react-icons/md";
 
 const categories = [
-{ name: "Burgers", icon: <GiHamburgerMenu size={40} /> },
+  { name: "Burgers", icon: <GiHamburgerMenu size={40} /> },
   { name: "Desserts", icon: <GiCakeSlice size={40} /> },
   { name: "Salads", icon: <GiFruitBowl size={40} /> },
   { name: "Sides", icon: <GiFrenchFries size={40} /> },
@@ -13,6 +14,12 @@ const categories = [
 ];
 
 export default function Categories() {
+  const navigate = useNavigate();
+
+  const handleClick = (category) => {
+    navigate(`/menu?category=${encodeURIComponent(category)}`);
+  };
+
   return (
     <section className="px-6 py-10 bg-white">
       <h2 className="text-2xl font-bold mb-6 text-center">Browse Categories</h2>
@@ -20,6 +27,7 @@ export default function Categories() {
         {categories.map((cat) => (
           <div
             key={cat.name}
+            onClick={() => handleClick(cat.name)}
             className="flex flex-col items-center p-4 bg-yellow-50 rounded-xl shadow hover:shadow-md cursor-pointer transition"
           >
             <div className="text-yellow-600 mb-2">{cat.icon}</div>
