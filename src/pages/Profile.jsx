@@ -1,3 +1,4 @@
+// ✅ Updated Profile.jsx with Favorites section
 
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
@@ -13,7 +14,7 @@ export default function Profile() {
   });
 
   const [addresses, setAddresses] = useState([
-    { label: "Home", address: " Main Street, Chennai", default: true },
+    { label: "Home", address: "Main Street, Chennai", default: true },
     { label: "Work", address: "Tech Park, Block B, Level 3" },
   ]);
   const [addingAddress, setAddingAddress] = useState(false);
@@ -36,7 +37,7 @@ export default function Profile() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 px-6 py-10 text-gray-800 dark:text-white">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
 
-        {/* Fixed Sidebar Buttons */}
+        {/* Sidebar */}
         <div className="w-full lg:w-1/4">
           <div className="lg:sticky lg:top-24 space-y-3">
             {["Payment Methods", "Notifications & Preferences", "Coupons & Rewards", "Account Settings", "Help & Support", "Logout"].map((label, index) => (
@@ -65,27 +66,10 @@ export default function Profile() {
               />
               {editingProfile ? (
                 <div className="space-y-2 w-full">
-                  <input
-                    className="border rounded px-3 py-1 w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                    value={profile.name}
-                    onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-                  />
-                  <input
-                    className="border rounded px-3 py-1 w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                    value={profile.email}
-                    onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-                  />
-                  <input
-                    className="border rounded px-3 py-1 w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                    value={profile.phone}
-                    onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
-                  />
-                  <button
-                    onClick={handleProfileSave}
-                    className="mt-2 bg-green-500 text-white px-4 py-1 rounded"
-                  >
-                    Save Profile
-                  </button>
+                  <input className="border rounded px-3 py-1 w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white" value={profile.name} onChange={(e) => setProfile({ ...profile, name: e.target.value })} />
+                  <input className="border rounded px-3 py-1 w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white" value={profile.email} onChange={(e) => setProfile({ ...profile, email: e.target.value })} />
+                  <input className="border rounded px-3 py-1 w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white" value={profile.phone} onChange={(e) => setProfile({ ...profile, phone: e.target.value })} />
+                  <button onClick={handleProfileSave} className="mt-2 bg-green-500 text-white px-4 py-1 rounded">Save Profile</button>
                 </div>
               ) : (
                 <div>
@@ -96,16 +80,13 @@ export default function Profile() {
               )}
             </div>
             {!editingProfile && (
-              <button
-                onClick={() => setEditingProfile(true)}
-                className="mt-2 bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600"
-              >
+              <button onClick={() => setEditingProfile(true)} className="mt-2 bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600">
                 Edit Profile
               </button>
             )}
           </div>
 
-          {/* 🏠 Delivery Addresses */}
+          {/* 🏠 Addresses */}
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
             <h3 className="text-xl font-semibold mb-4">🏠 Delivery Addresses</h3>
             {addresses.map((addr, idx) => (
@@ -121,24 +102,16 @@ export default function Profile() {
               <div className="mt-4 space-y-2">
                 <input placeholder="Label (e.g., Home)" className="border px-2 py-1 rounded w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
                 <input placeholder="Full Address" className="border px-2 py-1 rounded w-full dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-                <button
-                  onClick={handleAddAddress}
-                  className="bg-green-500 text-white px-4 py-1 rounded"
-                >
-                  Save Address
-                </button>
+                <button onClick={handleAddAddress} className="bg-green-500 text-white px-4 py-1 rounded">Save Address</button>
               </div>
             ) : (
-              <button
-                onClick={() => setAddingAddress(true)}
-                className="mt-3 bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600"
-              >
+              <button onClick={() => setAddingAddress(true)} className="mt-3 bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600">
                 Add New Address
               </button>
             )}
           </div>
 
-          {/* 📦 Past Orders */}
+          {/* 📦 Orders */}
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
             <h3 className="text-xl font-semibold mb-4">📦 Order History</h3>
             {orders.map((order) => (
@@ -148,18 +121,40 @@ export default function Profile() {
                 <p className="text-gray-500 dark:text-gray-400 text-sm">Delivered on {order.date}</p>
                 <p className="text-sm font-semibold">Total Paid: {order.total}</p>
                 <div className="mt-2 flex gap-3">
-                  <button className="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600">
-                    Reorder
-                  </button>
-                  <button className="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white px-3 py-1 rounded text-sm hover:bg-gray-300 dark:hover:bg-gray-600">
-                    Help
-                  </button>
+                  <button className="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600">Reorder</button>
+                  <button className="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white px-3 py-1 rounded text-sm hover:bg-gray-300 dark:hover:bg-gray-600">Help</button>
                 </div>
               </div>
             ))}
           </div>
-        </div>
 
+          {/* ❤️ Favorite Dishes */}
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow">
+            <h3 className="text-xl font-semibold mb-4">❤️ Favorite Dishes</h3>
+            {favorites.length === 0 ? (
+              <p className="text-gray-500">No favorite dishes yet.</p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {favorites.map((item) => (
+                  <div key={item.id} className="bg-gray-100 dark:bg-gray-700 rounded-xl shadow-md overflow-hidden">
+                    <img src={item.image} alt={item.name} className="w-full h-40 object-cover" />
+                    <div className="p-4">
+                      <h4 className="font-semibold text-lg">{item.name}</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">{item.desc}</p>
+                      <div className="mt-2 text-yellow-700 font-bold">{item.price}</div>
+                      <button
+                        onClick={() => dispatch({ type: "REMOVE_FROM_FAVORITES", payload: item.id })}
+                        className="mt-3 bg-red-100 text-red-600 px-3 py-1 rounded text-sm hover:bg-red-200"
+                      >
+                        Remove from Favorites
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
