@@ -1,6 +1,6 @@
 
 const products = [
-  // 🍔 Burgers
+  //  Burgers
   {
     id: 1,
     name: "Cheeseburger",
@@ -29,7 +29,7 @@ const products = [
     image: "src/assets/bacon-king.jpg",
   },
 
-  // 🍨 Ice Cream
+  //  Ice Cream
   {
     id: 4,
     name: "Strawberry Ice Cream",
@@ -49,7 +49,7 @@ const products = [
     image: "src/assets/icecream-cookies.jpg",
   },
 
-  // 🍜 Noodles
+  //  Noodles
   {
     id: 6,
     name: "Fried Sliced Noodles",
@@ -78,7 +78,7 @@ const products = [
     image: "src/assets/wonton-noodles.jpg",
   },
 
-  // 🥗 Salads
+  //  Salads
   {
     id: 9,
     name: "Green Salad",
@@ -98,7 +98,7 @@ const products = [
     image: "src/assets/caesar-salad.jpg",
   },
 
-  // 🍟 Sides
+  //  Sides
   {
     id: 11,
     name: "French Fries",
@@ -127,7 +127,7 @@ const products = [
     image: "src/assets/cheese-balls.jpg",
   },
 
-  // 🍰 Desserts
+  //  Desserts
   {
     id: 14,
     name: "Chocolate Lava Cake",

@@ -1,4 +1,3 @@
-// ✅ Updated Profile.jsx with Fixed Sidebar and Dark Mode Support
 
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";

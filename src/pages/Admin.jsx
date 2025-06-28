@@ -1,4 +1,3 @@
-// ✅ Updated Admin.jsx with image URL and file upload support
 
 import React, { useState } from "react";
 
