@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
 
+import heroChicken from "../assets/hero-chicken.jpg";
+import heroVegan from "../assets/hero-vegan.jpg";
+import heroPizza from "../assets/hero-pizza.jpg";
+
 const slides = [
   {
     title: "CRISPY CHICKEN",
-    subtitle: "Fresh & Crispy ",
-    image: "/src/assets/hero-chicken.jpg",
+    subtitle: "Fresh & Crispy",
+    image: heroChicken,
   },
   {
     title: "VEGAN BURGER",
     subtitle: "Fresh & Healthy Delight",
-    image: "/src/assets/hero-vegan.jpg",
+    image: heroVegan,
   },
   {
     title: "PANEER PIZZA",
     subtitle: "Desi Cheese Crust Special",
-    image: "/src/assets/hero-pizza.jpg",
+    image: heroPizza,
   },
 ];
 
@@ -24,7 +28,8 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 4000); // Change every 4 sec
+    }, 4000); // Rotate every 4 seconds
+
     return () => clearInterval(timer);
   }, []);
 

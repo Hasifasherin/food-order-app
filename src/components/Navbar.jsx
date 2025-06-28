@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   const [dark, setDark] = useState(false);
 
-  // 🔁 Sync theme on toggle
+  //  Sync theme on toggle
   useEffect(() => {
     if (dark) {
       document.documentElement.classList.add("dark");
@@ -15,7 +15,7 @@ export default function Navbar() {
     }
   }, [dark]);
 
-  // 🔄 Load saved theme from localStorage
+  //  Load saved theme from localStorage
   useEffect(() => {
     const theme = localStorage.getItem("theme");
     if (theme === "dark") setDark(true);

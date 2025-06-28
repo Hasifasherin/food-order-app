@@ -1,3 +1,19 @@
+// ✅ Import images from assets
+import cheeseburger from "../assets/cheeseburger.jpg";
+import doubleWhopper from "../assets/double-whopper.jpg";
+import baconKing from "../assets/bacon-king.jpg";
+import icecreamStrawberry from "../assets/icecream-strawberry.jpg";
+import icecreamCookies from "../assets/icecream-cookies.jpg";
+import friedNoodles from "../assets/fried-noodles.jpg";
+import danDan from "../assets/dan-dan.jpg";
+import wontonNoodles from "../assets/wonton-noodles.jpg";
+import greenSalad from "../assets/green-salad.jpg";
+import caesarSalad from "../assets/caesar-salad.jpg";
+import fries from "../assets/fries.jpg";
+import onionRings from "../assets/onion-rings.jpg";
+import cheeseBalls from "../assets/cheese-balls.jpg";
+import lavaCake from "../assets/lava-cake.jpg";
+import redVelvet from "../assets/red-velvet.jpg";
 
 const products = [
   //  Burgers
@@ -8,7 +24,7 @@ const products = [
     price: "$6.99",
     rating: 4,
     category: "Burgers",
-    image: "src/assets/cheeseburger.jpg",
+    image: cheeseburger,
   },
   {
     id: 2,
@@ -17,7 +33,7 @@ const products = [
     price: "$8.49",
     rating: 5,
     category: "Burgers",
-    image: "src/assets/double-whopper.jpg",
+    image: doubleWhopper,
   },
   {
     id: 3,
@@ -26,7 +42,7 @@ const products = [
     price: "$9.99",
     rating: 5,
     category: "Burgers",
-    image: "src/assets/bacon-king.jpg",
+    image: baconKing,
   },
 
   //  Ice Cream
@@ -37,16 +53,16 @@ const products = [
     price: "$3.50",
     rating: 5,
     category: "Ice Cream",
-    image: "src/assets/icecream-strawberry.jpg",
+    image: icecreamStrawberry,
   },
   {
     id: 5,
-    name: "chocolate ice cream",
+    name: "Chocolate Ice Cream",
     desc: "Sweet and creamy chocolate flavor",
     price: "$4.00",
     rating: 5,
     category: "Ice Cream",
-    image: "src/assets/icecream-cookies.jpg",
+    image: icecreamCookies,
   },
 
   //  Noodles
@@ -57,7 +73,7 @@ const products = [
     price: "$7.99",
     rating: 4,
     category: "Noodles",
-    image: "src/assets/fried-noodles.jpg",
+    image: friedNoodles,
   },
   {
     id: 7,
@@ -66,7 +82,7 @@ const products = [
     price: "$8.50",
     rating: 5,
     category: "Noodles",
-    image: "src/assets/dan-dan.jpg",
+    image: danDan,
   },
   {
     id: 8,
@@ -75,7 +91,7 @@ const products = [
     price: "$8.25",
     rating: 4,
     category: "Noodles",
-    image: "src/assets/wonton-noodles.jpg",
+    image: wontonNoodles,
   },
 
   //  Salads
@@ -86,7 +102,7 @@ const products = [
     price: "$5.25",
     rating: 4,
     category: "Salads",
-    image: "src/assets/green-salad.jpg",
+    image: greenSalad,
   },
   {
     id: 10,
@@ -95,7 +111,7 @@ const products = [
     price: "$6.00",
     rating: 5,
     category: "Salads",
-    image: "src/assets/caesar-salad.jpg",
+    image: caesarSalad,
   },
 
   //  Sides
@@ -106,7 +122,7 @@ const products = [
     price: "$2.99",
     rating: 4,
     category: "Sides",
-    image: "src/assets/fries.jpg",
+    image: fries,
   },
   {
     id: 12,
@@ -115,7 +131,7 @@ const products = [
     price: "$3.49",
     rating: 3,
     category: "Sides",
-    image: "src/assets/onion-rings.jpg",
+    image: onionRings,
   },
   {
     id: 13,
@@ -124,7 +140,7 @@ const products = [
     price: "$4.25",
     rating: 5,
     category: "Sides",
-    image: "src/assets/cheese-balls.jpg",
+    image: cheeseBalls,
   },
 
   //  Desserts
@@ -135,7 +151,7 @@ const products = [
     price: "$5.99",
     rating: 5,
     category: "Desserts",
-    image: "src/assets/lava-cake.jpg",
+    image: lavaCake,
   },
   {
     id: 15,
@@ -144,7 +160,7 @@ const products = [
     price: "$6.50",
     rating: 5,
     category: "Desserts",
-    image: "src/assets/red-velvet.jpg",
+    image: redVelvet,
   },
 ];
 
