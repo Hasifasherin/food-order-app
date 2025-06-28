@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import products from "../data/products";
 import Categories from "../components/Categories";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaHeart } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 
 function useQuery() {
@@ -13,12 +13,11 @@ export default function Menu() {
   const location = useLocation();
   const query = useQuery();
   const navigate = useNavigate();
-  const { dispatch } = useCart();
+  const { dispatch, favorites } = useCart();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("");
 
-  // Update category whenever URL changes
   useEffect(() => {
     const newCategory = query.get("category") || "";
     setCategory(newCategory);
@@ -26,17 +25,19 @@ export default function Menu() {
 
   const categories = [...new Set(products.map((item) => item.category))];
 
-  const filteredItems = products.filter((item) =>
-    item.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    (category === "" || item.category === category)
+  const filteredItems = products.filter(
+    (item) =>
+      item.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (category === "" || item.category === category)
   );
+
+  const isFavorite = (id) => favorites.some((f) => f.id === id);
 
   return (
     <div className="bg-yellow-50 min-h-screen px-6 py-10">
-      {/* 🔄 Show the category buttons instead of a plain heading */}
       <Categories />
 
-      {/* Search and dropdown filter section */}
+      {/* Search + Filter */}
       <div className="flex flex-col md:flex-row gap-4 my-6">
         <input
           type="text"
@@ -52,30 +53,59 @@ export default function Menu() {
         >
           <option value="">All Categories</option>
           {categories.map((cat, idx) => (
-            <option key={idx} value={cat}>{cat}</option>
+            <option key={idx} value={cat}>
+              {cat}
+            </option>
           ))}
         </select>
       </div>
 
-      {/* Product listing */}
+      {/* Product Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {filteredItems.map((item) => (
-          <div key={item.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
-            <img src={item.image} alt={item.name} className="w-full h-48 object-cover" />
+          <div
+            key={item.id}
+            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition relative"
+          >
+            {/* ❤️ Heart */}
+            <button
+              className={`absolute top-3 right-3 z-10 ${
+                isFavorite(item.id) ? "text-red-500" : "text-gray-400"
+              }`}
+              onClick={() =>
+                dispatch({ type: "MOVE_TO_FAVORITES", payload: item })
+              }
+            >
+              <FaHeart />
+            </button>
+
+            <div className="w-full h-48 bg-white flex items-center justify-center">
+              <img
+                src={item.image}
+                alt={item.name}
+                className="h-40 object-contain"
+              />
+            </div>
+
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-1">{item.name}</h2>
               <p className="text-sm text-gray-600 mb-2">{item.desc}</p>
               <div className="flex text-yellow-500 mb-2">
                 {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} className={i < item.rating ? "" : "text-gray-300"} />
+                  <FaStar
+                    key={i}
+                    className={i < item.rating ? "" : "text-gray-300"}
+                  />
                 ))}
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-yellow-700 font-bold text-lg">{item.price}</span>
+                <span className="text-yellow-700 font-bold text-lg">
+                  {item.price}
+                </span>
                 <button
-                  onClick={() => {
-                    dispatch({ type: "ADD_TO_CART", payload: item });
-                  }}
+                  onClick={() =>
+                    dispatch({ type: "ADD_TO_CART", payload: item })
+                  }
                   className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1 text-sm rounded-full"
                 >
                   Add to Cart

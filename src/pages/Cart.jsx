@@ -48,18 +48,14 @@ export default function CartPage() {
                             <FaPlus size={12} />
                           </button>
                         </div>
+                        
                         <button
-                          onClick={() => dispatch({ type: "MOVE_TO_FAVORITES", payload: item })}
-                          className="text-pink-600 text-sm flex items-center gap-1"
-                        >
-                          <FaHeart className="text-lg" /> Favorite
-                        </button>
-                        <button
-                          onClick={() => dispatch({ type: "REMOVE_FROM_CART", payload: item.id })}
-                          className="text-red-500 text-sm underline hover:text-red-700"
-                        >
-                          Remove
-                        </button>
+  onClick={() => dispatch({ type: "REMOVE_FROM_CART", payload: item.id })}
+  className="bg-red-100 text-red-600 text-sm px-3 py-1 rounded-full shadow hover:bg-red-200 hover:text-red-700 transition"
+>
+   Remove
+</button>
+
                       </div>
                     </div>
                   </div>

@@ -8,7 +8,7 @@ import Offers from "../components/Offers";
 
 export default function Home() {
   return (
-    <div className="bg-yellow-50 text-gray-800 font-sans">
+    <div className="bg-yellow-50 dark:bg-gray-900 text-gray-800 dark:text-white font-sans">
       <Hero />
 
       {/* Search and Location Bar */}
@@ -16,9 +16,9 @@ export default function Home() {
         <input
           type="text"
           placeholder="Search food, cuisines, or restaurants..."
-          className="w-full md:w-1/2 px-4 py-2 border rounded-xl shadow-sm"
+          className="w-full md:w-1/2 px-4 py-2 border rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
         />
-        <button className="bg-yellow-500 text-white px-4 py-2 rounded-xl">
+        <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-xl">
           📍 Change Location
         </button>
       </section>
